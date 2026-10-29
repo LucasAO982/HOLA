@@ -1,0 +1,21 @@
+PROYECTO: ESTACIÓN METEOROLÓGICA ESP32
+
+HARDWARE DISPLAY:
+- Modelo: 4 Pulgadas, 320x480, Driver ST7796, Interfaz SPI.
+- Touch: Controlador XPT2046.
+- Conexionado: Documentado en `conexionado_estacion.txt`. Requiere puentes físicos definitivos (VCC, GND, LED, SCK, MISO, MOSI).
+
+ESTADO:
+- Estructura de carpetas: OK.
+- Comunicación ESP-NOW: Definida y MACs configuradas.
+  - Terraza (Emisor): 10:06:1C:83:AC:B8
+  - Pantalla (Receptor): 68:09:47:57:C9:DC
+- Firmware Terraza: Migrado a BMP180 (I2C) usando pines definidos.
+- Firmware Pantalla: Lógica de navegación automática implementada.
+- Web App: Estética renovada, iconos climáticos integrados y logo ET25 añadido.
+
+PENDIENTES:
+1. Probar funcionamiento de la Página Web (backend/frontend).
+2. Realizar cableado físico final del display según `conexionado_estacion.txt`.
+3. Integrar código de sensores finales (YL83, BME180, DHT22) en firmware/terraza.
+4. Finalizar navegación táctil e implementación definitiva de pantallas en firmware/pantalla.

@@ -1,0 +1,27 @@
+PASOS REALIZADOS Y PENDIENTES - PROYECTO ESTACIÓN METEOROLÓGICA
+
+---
+
+PASOS REALIZADOS:
+1. Clonación y actualización del repositorio: Se mantiene sincronizado con https://github.com/C4rchu/Estacion-Meteorologica.
+2. Modificación de `pagina_web/backend/main.py`:
+   - Eliminamos la dependencia del `WeatherSimulator`.
+   - Implementamos un endpoint `POST /api/update` para recibir datos JSON del ESP32.
+   - Implementamos un endpoint `GET /api/weather` para servir los últimos datos recibidos a la web.
+   - Configuramos una variable global para almacenar el estado meteorológico.
+3. Creación de `requirements.txt`:
+   - Se creó el archivo en la raíz del repositorio con las librerías necesarias (`fastapi`, `uvicorn`) para el despliegue en la nube.
+
+PASOS PENDIENTES:
+1. Subir los cambios a GitHub:
+   - Debes ejecutar los comandos `git add .`, `git commit -m "Preparación para Render"` y `git push` desde la terminal en la carpeta `Estacion-Meteorologica`.
+2. Despliegue en Render (Nube):
+   - Crear cuenta en Render.com.
+   - Crear un "Web Service" conectando tu repositorio de GitHub.
+   - Configurar el "Start Command" como: `uvicorn pagina_web.backend.main:app --host 0.0.0.0 --port $PORT`
+   - Iniciar el servicio y obtener la URL pública.
+3. Configuración del ESP32:
+   - Modificar el código de tu ESP32 (en `firmware/terraza`) para que realice una petición HTTP POST hacia la URL que te dará Render.
+   - Asegurarte de que el ESP32 tenga conexión a Wi-Fi para realizar esta petición.
+4. Validación final:
+   - Verificar que al enviar datos desde el ESP32, la página web (la URL de Render) se actualice con los valores reales.
